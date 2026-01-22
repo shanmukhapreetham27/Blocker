@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blocker</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="popup-container">
+        <h1>Blocker</h1>
+
+        <div class="status" id="status">
+            <p id="statusMessage">Loading...</p>
+        </div>
+
+        <div class="usage">
+            <h2>Today's Usage</h2>
+            <div class="usage-item">
+                <span>X:</span>
+                <span id="time-x">0 min</span>
+            </div>
+            <div class="usage-item">
+                <span>Reddit:</span>
+                <span id="time-reddit">0 min</span>
+            </div>
+            <div class="usage-item">
+                <span>YouTube:</span>
+                <span id="time-youtube">0 min</span>
+            </div>
+            <div class="usage-item">
+                <span>Instagram:</span>
+                <span id="time-instagram">0 min</span>
+            </div>
+            <div class="divider"></div>
+            <div class="usage-item total">
+                <span>Total:</span>
+                <span id="time-total">0 min</span>
+            </div>
+        </div>
+
+        <div class="reset-info">
+            <p>Resets in: <span id="resetTime">00:00</span></p>
+        </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>

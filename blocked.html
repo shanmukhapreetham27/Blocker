@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blocked</title>
+  <link rel="stylesheet" href="blocked.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="header">BLOCKED</h1>
+    
+    <p class="reason" id="reason">Loading...</p>
+    
+    <div class="usage-section">
+      <h2 class="section-title">Today's Usage</h2>
+      <div class="usage-list" id="usageList">
+        <div class="usage-row">
+          <span class="platform">X:</span>
+          <span class="time" id="time-x">0 min</span>
+        </div>
+        <div class="usage-row">
+          <span class="platform">Reddit:</span>
+          <span class="time" id="time-reddit">0 min</span>
+        </div>
+        <div class="usage-row">
+          <span class="platform">YouTube:</span>
+          <span class="time" id="time-youtube">0 min</span>
+        </div>
+        <div class="usage-row">
+          <span class="platform">Instagram:</span>
+          <span class="time" id="time-instagram">0 min</span>
+        </div>
+        <div class="divider"></div>
+        <div class="usage-row total">
+          <span class="platform">Total:</span>
+          <span class="time" id="time-total">0 min</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="reset-section">
+      <p class="reset-label">Next reset in:</p>
+      <p class="reset-time" id="resetTime">00:00</p>
+    </div>
+  </div>
+  
+  <script src="utils.js"></script>
+  <script src="blocked.js"></script>
+</body>
+</html>

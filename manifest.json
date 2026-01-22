@@ -1,0 +1,62 @@
+{
+    "manifest_version": 3,
+    "name": "Blocker",
+    "version": "1.0.0",
+    "description": "Strict social media time limiter - 75 minutes daily limit with night blocking",
+    "permissions": [
+        "storage",
+        "tabs",
+        "alarms",
+        "declarativeNetRequest",
+        "notifications"
+    ],
+    "host_permissions": [
+        "*://*.x.com/*",
+        "*://*.twitter.com/*",
+        "*://*.reddit.com/*",
+        "*://*.youtube.com/*",
+        "*://*.instagram.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icon16.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
+        },
+        "default_title": "Blocker - View Usage"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.x.com/*",
+                "*://*.twitter.com/*",
+                "*://*.reddit.com/*",
+                "*://*.youtube.com/*",
+                "*://*.instagram.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "blocked.html"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    }
+}

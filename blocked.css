@@ -1,0 +1,105 @@
+/* Pure black and white block page styling - DARK THEME */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+  background-color: #000000;
+  color: #FFFFFF;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.header {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  color: #FFFFFF;
+}
+
+.reason {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 50px;
+  color: #FFFFFF;
+}
+
+.usage-section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.usage-list {
+  border: 2px solid #FFFFFF;
+  padding: 30px;
+}
+
+.usage-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 18px;
+}
+
+.usage-row.total {
+  font-weight: 700;
+  padding-top: 15px;
+}
+
+.platform {
+  text-align: left;
+  flex: 1;
+}
+
+.time {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  min-width: 80px;
+}
+
+.divider {
+  height: 2px;
+  background-color: #FFFFFF;
+  margin: 15px 0 5px 0;
+}
+
+.reset-section {
+  margin-top: 50px;
+}
+
+.reset-label {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+}
+
+.reset-time {
+  font-size: 32px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 3px;
+  color: #FFFFFF;
+}
