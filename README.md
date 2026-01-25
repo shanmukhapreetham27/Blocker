@@ -61,9 +61,6 @@ Blocker/
 ├── blocked.html        # Block page structure
 ├── blocked.css         # Block page styling (pure black & white)
 ├── blocked.js          # Block page dynamic content
-├── icon16.png          # Extension icon (16x16)
-├── icon48.png          # Extension icon (48x48)
-├── icon128.png         # Extension icon (128x128)
 └── README.md           # This file
 ```
 
@@ -106,4 +103,4 @@ MIT License - Use freely, modify as needed.
 
 ## Version
 
-**v1.0.0** - Initial release with strict tracking and hard block.
+**v1.1.0** - Added robust night blocking with `declarativeNetRequest` and UI polish.

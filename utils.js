@@ -52,7 +52,7 @@ function isSupportedDomain(url) {
 }
 
 /**
- * Check if current time is within night block window (10:30 PM - 6:30 AM)
+ * Check if current time is within night block window (10:00 PM - 6:30 AM)
  */
 function isInNightBlock() {
     const now = new Date();

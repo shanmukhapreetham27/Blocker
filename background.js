@@ -15,6 +15,7 @@ const NOTIFICATION_MILESTONES = [30, 10, 5]; // Minutes
 chrome.runtime.onInstalled.addListener(async () => {
 
     await initializeStorage();
+    await updateNightBlockRules();
 
     // Set up alarm to check every minute
     chrome.alarms.create('checkStatus', { periodInMinutes: 1 });
@@ -36,10 +37,43 @@ chrome.runtime.onStartup.addListener(async () => {
  */
 chrome.alarms.onAlarm.addListener(async (alarm) => {
     if (alarm.name === 'checkStatus') {
-        await checkAndReset();
+        const resetNeeded = await checkAndReset();
+        await updateNightBlockRules(); // Dynamic DNR update
         await checkCurrentTab();
     }
 });
+
+/**
+ * Update declarativeNetRequest rules for night block
+ */
+async function updateNightBlockRules() {
+    const isNight = isInNightBlock();
+    const ruleId = 1;
+
+    if (isNight) {
+        // Domains to block (matching getSupportedDomains)
+        const domains = ['x.com', 'twitter.com', 'reddit.com', 'youtube.com', 'instagram.com'];
+
+        await chrome.declarativeNetRequest.updateDynamicRules({
+            removeRuleIds: [ruleId],
+            addRules: [{
+                id: ruleId,
+                priority: 1,
+                action: { type: 'redirect', redirect: { extensionPath: '/blocked.html' } },
+                condition: {
+                    urlFilter: '*',
+                    initiatorDomains: [], // Apply globally if navigating
+                    requestDomains: domains,
+                    resourceTypes: ['main_frame']
+                }
+            }]
+        });
+    } else {
+        await chrome.declarativeNetRequest.updateDynamicRules({
+            removeRuleIds: [ruleId]
+        });
+    }
+}
 
 /**
  * Check if daily reset should occur
@@ -47,11 +81,11 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
 async function checkAndReset() {
     return new Promise((resolve) => {
         chrome.storage.local.get(['lastResetTimestamp'], async (result) => {
-            if (shouldResetToday(result.lastResetTimestamp)) {
-
+            const needsReset = shouldResetToday(result.lastResetTimestamp);
+            if (needsReset) {
                 await resetDailyUsage();
             }
-            resolve();
+            resolve(needsReset);
         });
     });
 }
@@ -460,7 +494,6 @@ async function checkNotifications() {
 
                 chrome.notifications.create({
                     type: 'basic',
-                    iconUrl: 'icon128.png',
                     title: 'Time Limits',
                     message: message,
                     priority: 2

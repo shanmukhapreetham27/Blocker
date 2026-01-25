@@ -66,7 +66,7 @@ async function updateUI() {
 
             if (isInNightBlock()) {
                 statusEl.classList.add('blocked');
-                messageEl.textContent = 'BLOCKED (Night)';
+                messageEl.textContent = 'NIGHT BLOCK ACTIVE';
                 forceBlockCurrentTab(); // Proactively block
             } else if (timeRemaining <= 0 && (result.dailyUsageTotal > 0 || currentSessionDuration > 0)) {
                 // Only show Limit Reached if we've actually used time
